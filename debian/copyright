@@ -1,0 +1,38 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: sphinx-linklint
+Upstream-Contact: Ned Batchelder <ned@nedbatchelder.com>
+Source: https://pypi.org/project/sphinx-linklint/
+
+Files: *
+Copyright:
+    © 2026 Ned Batchelder <ned@nedbatchelder.com>
+License: Apache-2.0
+License-Grant:
+    license = "Apache-2.0"
+
+Files: debian/*
+Copyright:
+    © 2010–2026 Ben Finney <bignose@debian.org>
+License: GPL-3+
+License-Grant:
+    This is free software: you may copy, modify, and/or distribute this work
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; version 3 of that license or any later version.
+    No warranty expressed or implied.
+
+
+License: Apache-2.0
+    On Debian systems, the complete text of version 2.0 of the Apache License
+    can be found in ‘/usr/share/common-licenses/Apache-2.0’.
+
+License: GPL-3+
+    On Debian systems, the complete text of the GNU General Public License
+    version 3 can be found in the file ‘/usr/share/common-licenses/GPL-3’.
+
+
+# Local variables:
+# coding: utf-8
+# mode: debian-copyright
+# fill-column: 78
+# End:
+# vim: fileencoding=utf-8 textwidth=78 :

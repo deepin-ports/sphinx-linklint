@@ -1,0 +1,19 @@
+# debian/source/lintian-overrides
+# Overrides for Lintian checks of this source package.
+# Documentation: ‘/usr/share/doc/lintian/lintian’ §2.4.
+
+# “VCS” is the canonical spelling of that initialism.
+# Lintian should ignore case of control field names. Debian bug#1010241.
+cute-field VCS-Browser vs Vcs-Browser [debian/control:*]
+cute-field VCS-Git vs Vcs-Git [debian/control:*]
+
+# There is no upstream document for a ‘sphinx-linklint(1)’ manual page
+# <URL:https://github.com/nedbat/sphinx-linklint/issues/NNN>.
+maintainer-manual-page [debian/sphinx-linklint.1]
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf-space
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

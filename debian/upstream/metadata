@@ -1,0 +1,33 @@
+# debian/upstream/metadata
+# Machine-readable metadata of the upstream project for this Debian package.
+# Documentation: <URL:https://dep-team.pages.debian.net/deps/dep12/>
+#
+# This is free software, and you are welcome to redistribute it under
+# certain conditions; see the end of this file for copyright
+# information, grant of license, and disclaimer of warranty.
+
+%YAML 1.1
+---
+# <URL:https://wiki.debian.org/UpstreamMetadata>
+Name: sphinx-linklint
+Contact: Ned Batchelder <ned@nedbatchelder.com>
+Archive: PyPI
+Bug-Database: https://github.com/nedbat/sphinx-linklint/issues
+Bug-Submit: https://github.com/nedbat/sphinx-linklint/issues/new
+Repository: https://github.com/nedbat/sphinx-linklint/issues.git
+Repository-Browse: https://github.com/nedbat/sphinx-linklint/issues
+Changelog: https://github.com/nedbat/sphinx-linklint#changes
+
+
+# Copyright © 2026 Ben Finney <bignose@debian.org>
+#
+# This is free software; you may copy, modify, and/or distribute this work
+# under the terms of the GNU General Public License, version 3 or later.
+# No warranty expressed or implied.
+# See the file '/usr/share/common-licenses/GPL-3' for details.
+
+# Local variables:
+# coding: utf-8
+# mode: yaml
+# End:
+# vim: fileencoding=utf-8 filetype=yaml :

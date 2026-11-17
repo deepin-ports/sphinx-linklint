@@ -1,0 +1,12 @@
+Sphinx
+
+[dev]
+actionlint-py
+build
+check-manifest
+coverage
+pytest
+ruff
+tox
+tox-uv
+ty

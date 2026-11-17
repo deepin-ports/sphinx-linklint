@@ -1,0 +1,13 @@
+.venv
+.coverage
+.coverage.*
+htmlcov/
+tmp/
+*.egg-info/
+build/
+dist/
+
+*.pyc
+__pycache__
+.tox/
+.*_cache/

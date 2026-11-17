@@ -1,0 +1,12 @@
+# debian/sphinx-linklint.links
+# Symbolic links to create when installing package ‘sphinx-linklint’.
+# Manual page: ‘dh_link(1)’.
+
+usr/share/sphinx-linklint/bin/sphinx-linklint   usr/bin/sphinx-linklint
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

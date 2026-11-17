@@ -1,0 +1,111 @@
+.ds command sphinx-linklint
+.ds COMMAND SPHINX-LINKLINT
+.\" ==========
+.TH "\*[COMMAND]" 1 "2026-08-04" "sphinx-linklint"
+.
+.\" ==========
+.SH NAME
+\*[command] \- check for excessive references in Sphinx documents
+.
+.\" ==========
+.SH SYNOPSIS
+.
+.SY \*[command]
+.RB "[" "\-\-check"
+.IR "CHECK" " ["
+.BR "," " ... ] ]"
+.OP \-\-fix
+.I INPUTFILE
+[...]
+.YS
+.
+.SY \*[command]
+.B \-\-help
+.YS
+.
+.\" ==========
+.SH DESCRIPTION
+.B sphinx-linklint
+finds, reports, and optionally removes excessive references from Sphinx source
+documents \f[I]INPUTFILE\f[].
+.PP
+.
+.\" ==========
+.SH OPTIONS
+.
+.TP
+\f[B]\-\-check\f[] \f[I]CHECK\f[] [ \f[B],\f[] ... ]
+Perform only each specified \f[I]CHECK\f[].
+The default is \f[B]all\f[].
+.
+Supported \f[I]CHECK\f[] values are:
+.
+.RS
+.
+.TP
+.B self
+Find references that link to their own section.
+For example, in the description of a class, use \f[B]:class:\f[] referring to
+itself. These should not be links since they will not take you someplace new.
+.
+.TP
+.B paradup
+Find multiple identical references within a single paragraph.
+The first should be a link, but subsequent references don't need to be links,
+they are just distractions.
+.
+.TP
+.B all
+Perform all the above checks.
+.
+.RE
+.
+.TP
+\f[B]\-\-fix\f[]
+Modify each \f[I]INPUTFILE\f[] in place,
+correcting the references found by each \f[I]CHECK\f[].
+.
+The default is to not modify any \f[I]INPUTFILE\f[].
+.
+.TP
+.B \-\-help
+Display help information, then exit.
+.
+.\" ==========
+.SH REPORTING BUGS
+.P
+Please report any bugs using the
+.UR https://github.com/nedbat/sphinx-linklint/issues/new
+sphinx-linklint project issue tracker
+.UE .
+.
+.\" ==========
+.SH COPYRIGHT
+This manual page is
+Copyright © 2026
+.MT bignose@debian.org
+Ben Finney
+.ME ,
+and is freely available to anyone under certain conditions.
+See the source document for details.
+.
+.\" ==========
+.SH SEE ALSO
+.P
+The
+.UR https://github.com/nedbat/sphinx-linklint
+sphinx-linklint project upstream home page
+.UE .
+.
+.\" Copyright © 2026 Ben Finney <bignose@debian.org>
+.
+.\" This is free software: you may copy, modify, and/or distribute this work
+.\" under the terms of the GNU General Public License as published by the
+.\" Free Software Foundation; version 3 of that license or any later version.
+.\" No warranty expressed or implied. See the file ‘LICENSE.GPL-3’ for details.
+.
+.\" Local variables:
+.\" coding: utf-8
+.\" mode: nroff
+.\" End:
+.\" vim: fileencoding=utf-8 filetype=nroff :

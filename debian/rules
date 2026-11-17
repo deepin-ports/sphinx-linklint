@@ -1,0 +1,65 @@
+#! /usr/bin/make -f
+#
+# debian/rules
+# Part of Debian ‘sphinx-linklint’ package.
+#
+# This is free software, and you are welcome to redistribute it under
+# certain conditions; see the end of this file for copyright
+# information, grant of license, and disclaimer of warranty.
+
+PACKAGE_NAME = sphinx-linklint
+
+MAIN_PYTHON_PACKAGE = sphinx_linklint
+
+LIBRARY_PACKAGE_NAME = python3-sphinxcontrib-linklint
+
+# Send HTTP traffic to the “discard” service during packaging actions.
+export http_proxy = http://127.0.1.1:9/
+export https_proxy = ${http_proxy}
+
+export PYBUILD_SYSTEM := pyproject
+export PYBUILD_NAME = ${MAIN_PYTHON_PACKAGE}
+export PYBUILD_DESTDIR = debian/tmp
+
+export PYBUILD_INSTALL_ARGS ?= \
+	--install-option="--install-layout=deb"
+
+# Override upstream's use of Tox (because it uses multiple unpackaged
+# dependencies).
+export PYBUILD_TEST_CUSTOM = 1
+export PYBUILD_TEST_ARGS = python3 -m pytest
+export PYBUILD_AFTER_TEST = $(RM) -r {build_dir}/.pytest_cache/
+
+# The library package should not install binaries to the default location.
+private_bin_dir = $(CURDIR)/usr/share/${PACKAGE_NAME}/bin
+export PYBUILD_AFTER_BUILD = \
+	mv "{home_dir}/scripts"/* "${private_bin_dir}"/.
+
+export RM ?= rm -f
+export MKDIR ?= mkdir --parents
+
+
+%:
+	dh $@ --buildsystem=pybuild
+
+
+override_dh_auto_build: ${private_bin_dir}
+	dh_auto_build
+
+${private_bin_dir}:
+	$(MKDIR) "$@"
+
+
+# Copyright © 2010–2026 Ben Finney <bignose@debian.org>
+#
+# This is free software: you may copy, modify, and/or distribute this work
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation; version 3 of that license or any later version.
+# No warranty expressed or implied.
+
+
+# Local variables:
+# coding: utf-8
+# mode: gnumakefile
+# End:
+# vim: fileencoding=utf-8 filetype=make :

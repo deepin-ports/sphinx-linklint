@@ -1,0 +1,14 @@
+# debian/python3-sphinxcontrib-linklint.install
+# Files to install when installing package ‘python3-sphinxcontrib-linklint’.
+# Manual page: ‘dh_install(1)’.
+
+usr/lib/python3.*/dist-packages/sphinx_linklint
+usr/lib/python3.*/dist-packages/sphinx_linklint-*.dist-info
+usr/share/sphinx-linklint/bin
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

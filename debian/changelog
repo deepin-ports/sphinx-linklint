@@ -1,0 +1,15 @@
+sphinx-linklint (2.0.2-1) unstable; urgency=medium
+
+  * New upstream version.
+  * debian/README.source:
+    * Document our preferred VCS collaboration strategy.
+    * Document policy on use of Generative AI.
+
+ -- Ben Finney <bignose@debian.org>  Wed, 07 Oct 2026 14:35:44 +1100
+
+sphinx-linklint (2.0.1-1) unstable; urgency=medium
+
+  * Initial Debian release.
+    (Closes: bug#1143214)
+
+ -- Ben Finney <bignose@debian.org>  Mon, 14 Sep 2026 15:09:54 +1000

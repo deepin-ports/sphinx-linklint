@@ -1,0 +1,155 @@
+===========================================
+Debian source package for ‘sphinx-linklint’
+===========================================
+
+
+Do not propose any output from Generative AI
+============================================
+
+Any contribution to this project must be created by humans. Each contribution's
+provenance for copyright purposes must be explicit and testified by the human
+proposing it. The human proposing the contribution must understand it in full,
+and be prepared to discuss the contribution meaningfully.
+
+Generative AI, in addition to its many ethical violations, is counter to this
+requirement and wastes everyone's time.
+
+This project rejects the use of Large Language Model (LLM) systems, or other
+Generative AI systems, and reserves the right to summarily reject any
+contribution generated this way, without further discussion.
+
+
+Package maintenance in VCS
+==========================
+
+The source for the Debian packaging is managed in the ‘main’ branch of the
+Git repository.
+
+
+Work on changes in a branch or fork
+-----------------------------------
+
+The official source repository represents the code base intended for
+publication.
+
+If you wish to propose a change to the maintainer, your changes should not be
+unilaterally pushed to the official repository. Instead:
+
+* Fork the official repository.
+
+* Create a feature branch for the changes you want to propose.
+
+* Commit a sequence of small, coherent commits, each one representing a single
+  idea, easy to review and discuss.
+
+* When your changes are ready, create a merge request, and submit it for review
+  and further change. Do not push these changes without maintainer approval.
+
+* Eventually, after review and approval, the approved merge request will be
+  merged by a maintainer to the official repository.
+
+This is equivalent to the Git “forking workflow”. For more on this, see for
+example `this lesson on the Forking Workflow (with Branching)`_.
+
+..  _this lesson on the Forking Workflow (with Branching):
+    https://git-mastery.org/lessons/forkingWorkflow/
+
+
+Work on a release in VCS
+------------------------
+
+* Get the correct upstream source, using UScan::
+
+      $ uscan --download-current-version
+
+* In the ‘main’ branch, create a new Debian changelog entry.
+
+  Because the release is not complete, its version string should have a Debian
+  packaging release string such that it will sort prior to the eventual
+  release.
+
+  * The target destination (in the header) is “UNRELEASED”.
+
+  * The expected eventual version string (e.g. “1.16.5+dfsg.1-2”) should have a
+    pre-release suffix (e.g. “~pre1”) appended. The full package version, prior
+    to finalising the release, would then be e.g. “1.16.5+dfsg.1-2~pre1”.
+
+  * This allows setting the signature line as normal during development.
+
+
+Build the source package from VCS
+---------------------------------
+
+* Ensure the ‘main’ branch contains all the changes that are intended for the
+  release to Debian.
+
+* Until the work is ready for release, maintain the pre-release suffix (e.g.
+  “~pre1”) on the package version string. The changelog entry should be in the
+  state described in “Work on a release in VCS”, above.
+
+  This correctly leaves the decision of which destination for the upload, who
+  uploads and when, to the point in time where that decision is made: the time
+  of finalising the release.
+
+* Rebase a working branch, e.g. ‘wip/release/1.16.5+dfsg.1-2’, from the HEAD of
+  ‘main’.
+
+* In this branch, finalise the ‘debian/changelog’:
+
+  * Declare a release name, e.g. “* The “Faisal Arefin Dipan” release.”
+
+  * Set the target distribution, e.g. “unstable”.
+
+  * Set the signature line containing the correct person and timestamp,
+    e.g. “Ben Finney <bignose@debian.org>  Tue, 09 Aug 2026 06:05:28 +1000”.
+
+  * Commit the finalised changelog with a commit message of the form
+    “Finalise release “1.16.5+dfsg.1-2”.”
+
+* Test the source package:
+
+  * Export the source package using ‘Git-BuildPackage’::
+
+        $ gbp buildpackage -S
+
+  * Test the source package by building it in a SBuild or PBuilder
+    environment, with all Lintian checks enabled.
+
+* Only when the package builds satisfactorily from the source package:
+
+  * Switch to the ‘main’ branch.
+
+  * Pull the work-in-progress branch ‘wip/release/1.16.5+dfsg.1-2’ to ‘main’.
+
+  * Create and sign a tag for the release, ‘release/1.16.5+dfsg.1-2’ with
+    the commit message “Debian release “1.16.5+dfsg.1-2”.”::
+
+        $ git tag --sign \
+            --message "Debian release “1.16.5+dfsg.1-2”." \
+            "release/1.16.5+dfsg.1-2"
+
+* Upload the successfully-built source package to Debian.
+
+* Prepare the ‘main’ branch for ongoing work:
+
+  * Delete the work-in-progress branch ‘wip/release/1.16.5+dfsg.1-2’.
+
+  * Optionally: Create a new work-in-progress for an upcoming release,
+    as described in “Work on a release in VCS”, above.
+
+
+..
+    Copyright © 2015–2026 Ben Finney <bignose@debian.org>
+    This is free software: you may copy, modify, and/or distribute this work
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; version 3 of that license or any later version.
+    No warranty expressed or implied.
+
+
+..
+    Local variables:
+    coding: utf-8
+    mode: text
+    mode: rst
+    End:
+    vim: fileencoding=utf-8 filetype=rst :

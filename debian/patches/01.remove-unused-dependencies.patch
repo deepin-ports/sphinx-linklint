@@ -1,0 +1,54 @@
+Description: Remove references to unused dependencies.
+ .
+ The upstream build-time checks make use of some packages not yet in Debian.
+ .
+ We don't need these, so remove them from the build system to allow remaining
+ checks to proceed.
+Author: Ben Finney <bignose@debian.org>
+Last-Update: 2026-08-26
+
+diff --git old/Makefile new/Makefile
+--- old/Makefile
++++ new/Makefile
+@@ -11,10 +11,8 @@ test:
+ 	tox -qe py312-sphinx8,coverage
+ 
+ quality:
+-	ty check
+ 	ruff check
+ 	ruff format
+-	actionlint
+ 
+ clean:
+ 	rm -rf .coverage .coverage.* htmlcov tmp
+
+diff --git old/pyproject.toml new/pyproject.toml
+--- old/pyproject.toml
++++ new/pyproject.toml
+@@ -26,7 +26,6 @@ Source = "https://github.com/nedbat/sphinx-linklint"
+ 
+ [project.optional-dependencies]
+ dev = [
+-    "actionlint-py",
+     "build",
+     "check-manifest",
+     "coverage",
+@@ -34,7 +33,6 @@ dev = [
+     "ruff",
+     "tox",
+     "tox-uv",
+-    "ty",
+ ]
+ 
+ [project.scripts]
+
+
+Local variables:
+coding: utf-8
+mode: diff
+time-stamp-format: "%:y-%02m-%02d"
+time-stamp-start: "^Last-Update:[ 	]+"
+time-stamp-end: "$"
+time-stamp-line-limit: 20
+End:
+vim: fileencoding=utf-8 filetype=diff :

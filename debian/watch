@@ -1,0 +1,21 @@
+# debian/watch
+# Debian UScan configuration for this package.
+# Manual page: ‘uscan(1)’.
+
+# Version of the UScan configuration format for this file.
+version = 4
+
+# Public releases at Debian redirector for Python Package Index.
+opts = " \
+        uversionmangle=s/(\d)((?:a|b|c|rc)\d*)$/$1~$2/ \
+        " \
+    https://pypi.debian.net/@PACKAGE@/ \
+    sphinx_linklint-@ANY_VERSION@@ARCHIVE_EXT@ \
+    debian uupdate
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

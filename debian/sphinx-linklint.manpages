@@ -1,0 +1,12 @@
+# debian/sphinx-linklint.manpages
+# Manual page files to install for the ‘sphinx-linklint’ package.
+# Manual page: ‘dh_installman(1)’.
+
+debian/sphinx-linklint.1
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf-space
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

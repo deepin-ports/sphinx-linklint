@@ -1,0 +1,99 @@
+[project]
+name = "sphinx-linklint"
+description = "A Sphinx extension to omit needless links"
+readme = "README.rst"
+authors = [
+    {name = "Ned Batchelder", email = "ned@nedbatchelder.com"},
+]
+license = "Apache-2.0"
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Sphinx :: Extension",
+    "Programming Language :: Python",
+]
+
+requires-python = ">= 3.12"
+
+dependencies = [
+    "Sphinx",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+Source = "https://github.com/nedbat/sphinx-linklint"
+
+[project.optional-dependencies]
+dev = [
+    "actionlint-py",
+    "build",
+    "check-manifest",
+    "coverage",
+    "pytest",
+    "ruff",
+    "tox",
+    "tox-uv",
+    "ty",
+]
+
+[project.scripts]
+sphinx-linklint = "sphinx_linklint.cli:main"
+
+[tool.setuptools.dynamic]
+version.attr = "sphinx_linklint.__version__"
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+ignore = [
+    "SIM102",   # Use a single `if` statement instead of nested `if` statements
+    "SIM103",   # Return the condition directly
+]
+
+[tool.pytest]
+filterwarnings = [
+    # lib/python3.15/site-packages/pygments/regexopt.py:57: DeprecationWarning: os.path.commonprefix() is deprecated. Use os.path.commonpath() for longest path prefix.
+    "ignore::DeprecationWarning:pygments",
+]
+
+[tool.coverage.paths]
+source = [
+    "src/sphinx_linklint",
+    "*/site-packages/sphinx_linklint",
+]
+tests = [
+    "tests",
+    "*/sphinx-linklint/tests",
+]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = ["tests"]
+source_pkgs = ["sphinx_linklint"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if __name__ == .__main__.:",
+    "pragma: only failure",
+    "pragma: debugging",
+    "if SAVE_INTERMEDIATE:",
+    "pytest.fail",
+]
+show_missing = true
+skip_covered = true
+
+[tool.check-manifest]
+ignore = [
+    "PKG-INFO",
+    "*.egg-info",
+    "*.egg-info/*",
+    "setup.cfg",
+]
+ignore-default-rules = true

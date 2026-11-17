@@ -1,0 +1,18 @@
+# debian/salsa-ci.yaml
+# Pipeline definition for Salsa Continuous Integration.
+# Documentation: <URL:https://salsa.debian.org/salsa-ci-team/pipeline>.
+---
+variables:
+  SALSA_CI_ENABLE_MISSING_BREAKS:
+    description: >-
+      Check if there are conflicting files against packages that are not
+      declared with “Conflicts”, nor “Breaks” + “Replaces”.
+    value: true
+  SALSA_CI_ENABLE_REPROTEST:
+    description: >-
+      Build the source package twice in isolated environments, then check for
+      differences between the built binary packages.
+    value: true
+
+include:
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml

@@ -1,0 +1,12 @@
+# debian/sphinx-linklint.dirs
+# Directories to create for package ‘sphinx-linklint’.
+# Manual page: ‘dh_installdirs(1)’.
+
+usr/bin
+
+
+# Local variables:
+# coding: utf-8
+# mode: conf
+# End:
+# vim: fileencoding=utf-8 filetype=conf :

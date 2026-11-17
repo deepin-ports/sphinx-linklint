@@ -1,0 +1,35 @@
+.PHONY: venv install test quality clean sterile dist release
+
+venv: .venv
+.venv:
+	uv venv -p 3.12 --prompt "linklint"
+
+install: .venv
+	uv pip install -e .[dev]
+
+test:
+	tox -qe py312-sphinx8,coverage
+
+quality:
+	ty check
+	ruff check
+	ruff format
+	actionlint
+
+clean:
+	rm -rf .coverage .coverage.* htmlcov tmp
+	rm -rf build/ dist/ src/*.egg-info
+	rm -rf __pycache__ */__pycache__
+
+sterile: clean
+	rm -rf .tox .*_cache .venv
+
+dist:
+	python -m build --sdist --wheel
+	check-manifest
+
+release:
+	@echo "Update src/sphinx_linklint/__init__.py"
+	@echo "Update README.rst"
+	@echo "Tag in git"
+	@echo "Push to GitHub"

@@ -1,0 +1,48 @@
+Source: sphinx-linklint
+Maintainer: Ben Finney <bignose@debian.org>
+Section: text
+Build-Depends-Indep:
+    dh-sequence-python3,
+    pybuild-plugin-pyproject,
+    python3-pytest <!nocheck>,
+    python3-setuptools,
+    python3-sphinx <!nocheck>,
+    tox <!nocheck>,
+    python3 (>= 3.12)
+Build-Depends:
+    dh-python,
+    debhelper-compat (= 14)
+Testsuite: autopkgtest-pkg-pybuild
+Standards-Version: 4.7.4
+Homepage: https://github.com/nedbat/sphinx-linklint/
+VCS-Git: https://salsa.debian.org/bignose/pkg-sphinx-linklint.git
+VCS-Browser: https://salsa.debian.org/bignose/pkg-sphinx-linklint/
+Description: checker for excessive references in Sphinx documents
+ The ‘sphinx_linklint’ extension for Sphinx finds excessive references in
+ Sphinx documentation, and can optionally remove the hyperlink from each.
+ .
+ Examples of excessive references found by this extension:
+  * A reference to the same section that contains the reference.
+  * Identical references in the same paragraph.
+
+Package: python3-sphinxcontrib-linklint
+Section: python
+Architecture: all
+Depends:
+    ${python3:Depends},
+    ${misc:Depends}
+Description: ${source:Synopsis} — Sphinx extension
+ ${source:Extended-Description}
+ .
+ This package installs the Sphinx extension Python library ‘sphinx_linklint’.
+
+Package: sphinx-linklint
+Architecture: all
+Depends:
+    python3-sphinxcontrib-linklint,
+    ${python3:Depends},
+    ${misc:Depends}
+Description: ${source:Synopsis} — command-line tool
+ ${source:Extended-Description}
+ .
+ This package installs the command-line static analysis tool ‘sphinx-linklint’.
